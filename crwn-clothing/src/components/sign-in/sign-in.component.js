@@ -57,7 +57,7 @@ class SignIn extends Component {
             required
           />
           <div className='buttons'>
-            <CustomButton type='button'>Sign In</CustomButton>
+            <CustomButton type='submit'>Sign In</CustomButton>
             <CustomButton
               type='button'
               isGoogleSignIn
