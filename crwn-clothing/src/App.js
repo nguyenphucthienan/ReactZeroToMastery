@@ -9,11 +9,18 @@ import ShopPage from './pages/shop-page/shop-page.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up-page/sign-in-and-sign-up-page.component';
 import CheckoutPage from './pages/checkout-page/checkout-page.component';
 
+import { checkUserSession } from './redux/user/user.actions';
+
 import { selectCurrentUser } from './redux/user/user.selectors';
 
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    const { checkUserSession } = this.props;
+    checkUserSession();
+  }
+
   render() {
     return (
       <div>
@@ -43,4 +50,8 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
